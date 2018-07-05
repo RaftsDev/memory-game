@@ -11,9 +11,25 @@
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
+
+function createDeck(n){
+  var symbolsArray['diamond','paper-plane-o','anchor','bolt','cube','leaf','bicycle','bomb'];
+  var cardsArray[];
+  var j=0;
+  for (var i = 0; i < n*n-1; i++) {
+    cardsArray[i]="<li class=&#34card&#34><br><i class=&#34fa fa-"+symbolsArray[j]+"></i><br></li>";
+    j++;
+    if (j==7){
+      j=0;
+    }
+
+  }
+  shuffle(cardsArray);
+  return cardsArray;
+}
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -21,10 +37,8 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
-
 
 /*
  * set up the event listener for a card. If a card is clicked:
