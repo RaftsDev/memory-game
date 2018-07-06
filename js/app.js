@@ -15,9 +15,9 @@
 //listener for create Deck
 
 addEventListener("click",createDeck(4));
-addEventListener("click",turnOver(evt));
+addEventListener("click",flipOver(evt));
 var previousSymbol;
-function turnOver(evt){
+function flipOver(evt){
   target = evt.target;
   iTagtarget = target.innerHTML;
   symbol = iTagTarget.classNames;
