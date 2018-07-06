@@ -15,7 +15,7 @@
 //listener for create Deck
 
 // addEventListener("click",createDeck(4));
-var deck = document.getElementsByClassName("deck");
+var deck = document.getElementsByClassName("deck")[0];
 deck.addEventListener("click",flipOver);
 var previousSymbol;
 function flipOver(evt) {
@@ -53,7 +53,7 @@ function createCardsArray(n){
 function createDeck(n){
   alert("createDeck"+n);
   var array = createCardsArray(n);
-  var deck = document.getElementsByClassName("deck");
+  var deck = document.getElementsByClassName("deck")[0];
   var fragment = document.createDocumentFragment();
   var text = "";
   for (var i=0;i<array.length;i++) {
