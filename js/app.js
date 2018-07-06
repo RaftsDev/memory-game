@@ -14,11 +14,12 @@
 
 //listener for create Deck
 
-addEventListener("click",createDeck(4));
-addEventListener("click",flipOver(evt));
+// addEventListener("click",createDeck(4));
+var deck = document.getElementsByClassName("deck");
+deck.addEventListener("click",flipOver);
 var previousSymbol;
-function flipOver(evt){
-  target = evt.target;
+function flipOver(evt) {
+  var target = evt.target;
   iTagtarget = target.innerHTML;
   symbol = iTagTarget.classNames;
   target.listClass.add("show");
@@ -30,11 +31,12 @@ function flipOver(evt){
     target.listClass.remove("show");
   }
   previousSymbol = symbol;
-}
+};
 
 function createCardsArray(n){
-  var symbolsArray['diamond','paper-plane-o','anchor','bolt','cube','leaf','bicycle','bomb'];
-  var cardsArray[];
+  alert("createCardsArray"+n);
+  var symbolsArray = ['diamond','paper-plane-o','anchor','bolt','cube','leaf','bicycle','bomb'];
+  var cardsArray = [];
   var j=0;
   for (var i = 0; i < n*n-1; i++) {
     cardsArray[i]="<li class=&#34card&#34><br><i class=&#34fa fa-"+symbolsArray[j]+"></i><br></li>";
@@ -49,12 +51,15 @@ function createCardsArray(n){
 }
 
 function createDeck(n){
-  var array[] = createCardsArray(n);
+  alert("createDeck"+n);
+  var array = createCardsArray(n);
   var deck = document.getElementsByClassName("deck");
-  var fragment;
+  var fragment = document.createDocumentFragment();
+  var text = "";
   for (var i=0;i<array.length;i++) {
-    fragment = fragment+array[i];
+    text = text+array[i];
   }
+  fragment.innerText = text;
   deck.appendChild(fragment);
 }
 
