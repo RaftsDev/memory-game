@@ -40,6 +40,7 @@ function createCardsArray(n){
   var j=0;
   for (var i = 0; i < n*n-1; i++) {
     cardsArray[i]="<li class=&#34card&#34><br><i class=&#34fa fa-"+symbolsArray[j]+"></i><br></li>";
+    alert(cardsArray[i]);
     j++;
     if (j==7){
       j=0;
