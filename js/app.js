@@ -12,7 +12,7 @@
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 
-function createDeck(n){
+function createCardsArray(n){
   var symbolsArray['diamond','paper-plane-o','anchor','bolt','cube','leaf','bicycle','bomb'];
   var cardsArray[];
   var j=0;
@@ -26,6 +26,15 @@ function createDeck(n){
   }
   shuffle(cardsArray);
   return cardsArray;
+}
+
+function createDeck(array){
+  var deck = document.getElementsByClassName("deck");
+  var fragment;
+  for (var i=0;i<array.length;i++) {
+    fragment = fragment+array[i];
+  }
+  deck.appendChild(fragment);
 }
 
 function shuffle(array) {
