@@ -12,6 +12,26 @@
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 
+//listener for create Deck
+
+addEventListener("click",createDeck(4));
+addEventListener("click",turnOver(evt));
+var previousSymbol;
+function turnOver(evt){
+  target = evt.target;
+  iTagtarget = target.innerHTML;
+  symbol = iTagTarget.classNames;
+  target.listClass.add("show");
+  setTimeout(1000);
+  if (symbol[1] == previousSymbol){
+    target.classNames.push("match");
+  }
+  else {
+    target.listClass.remove("show");
+  }
+  previousSymbol = symbol;
+}
+
 function createCardsArray(n){
   var symbolsArray['diamond','paper-plane-o','anchor','bolt','cube','leaf','bicycle','bomb'];
   var cardsArray[];
@@ -28,7 +48,8 @@ function createCardsArray(n){
   return cardsArray;
 }
 
-function createDeck(array){
+function createDeck(n){
+  var array[] = createCardsArray(n);
   var deck = document.getElementsByClassName("deck");
   var fragment;
   for (var i=0;i<array.length;i++) {
