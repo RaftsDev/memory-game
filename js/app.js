@@ -20,11 +20,11 @@ deck.addEventListener("click",flipOver);
 var previousSymbol;
 function flipOver(evt) {
   var target = evt.target;
-  iTagtarget = target.innerHTML;
-  symbol = iTagTarget.classNames;
+  iTagTarget = target.innerHTML;
+  symbol = iTagTarget.classNames[1];
   target.listClass.add("show");
   setTimeout(1000);
-  if (symbol[1] == previousSymbol){
+  if (symbol == previousSymbol){
     target.classNames.push("match");
   }
   else {
@@ -35,12 +35,14 @@ function flipOver(evt) {
 
 function createCardsArray(n){
   alert("createCardsArray"+n);
-  var symbolsArray = ['diamond','paper-plane-o','anchor','bolt','cube','leaf','bicycle','bomb'];
+  //var symbolsArray = ['diamond','paper-plane-o','anchor','bolt','cube','leaf','bicycle','bomb'];
   var cardsArray = [];
   var j=0;
   for (var i = 0; i < n*n-1; i++) {
-    cardsArray[i]="<li class=&#34card&#34><br><i class=&#34fa fa-"+symbolsArray[j]+"></i><br></li>";
-    alert(cardsArray[i]);
+    cardsArray[i]= document.createElement("li").listClass;// <li class=&#34card&#34><br><i class=&#34fa fa-"+symbolsArray[j]+"></i><br></li>";
+
+    //cardsArray[i]="<li>"+symbolsArray[j]+"</li>"
+    //alert(cardsArray[i]);
     j++;
     if (j==7){
       j=0;
@@ -52,7 +54,7 @@ function createCardsArray(n){
 }
 
 function createDeck(n){
-  alert("createDeck"+n);
+  //alert("createDeck"+n);
   var array = createCardsArray(n);
   var deck = document.getElementsByClassName("deck")[0];
   var fragment = document.createDocumentFragment();
@@ -60,7 +62,10 @@ function createDeck(n){
   for (var i=0;i<array.length;i++) {
     text = text+array[i];
   }
-  fragment.innerText = text;
+
+  alert(text);
+  fragment.innerHTML = "<li>1</li>";
+  alert(fragment.innerHTML);
   deck.appendChild(fragment);
 }
 
