@@ -14,23 +14,40 @@
 
 //listener for create Deck
 
-// addEventListener("click",createDeck(4));
 var deck = document.getElementsByClassName("deck")[0];
 deck.addEventListener("click",flipOver);
-var previousSymbol;
+// var restartButton = document.getElementsByClassName("restart")[0];
+// restartButton.addEventListener("click",createDeck(4));
+var previousSymbol = "";
+var previousEl = {};
+
 function flipOver(evt) {
   var target = evt.target;
-  iTagTarget = target.innerHTML;
-  symbol = iTagTarget.classNames[1];
-  target.listClass.add("show");
-  setTimeout(1000);
-  if (symbol == previousSymbol){
-    target.classNames.push("match");
-  }
-  else {
-    target.listClass.remove("show");
-  }
-  previousSymbol = symbol;
+
+  iTagTarget = target.children[0];
+  // console.log(iTagTarget);
+  symbol = iTagTarget.classList[1];
+  // alert("symbol="+symbol);
+  target.classList.add("show","open");
+  // alert("previousSymbol="+previousSymbol);
+  setTimeout(function(){
+    if (symbol === previousSymbol){
+      target.classList.add("match");
+      // alert("matched symbol="+symbol+" preSymbol="+previousSymbol);
+      previousSymbol = symbol;
+      previousEl.classList.add("match");
+      previousEl = {};
+
+
+    }
+    else {
+      // alert("not Matched");
+      target.classList.remove("show","open");
+      previousSymbol = symbol;
+      previousEl = target;
+    }},1000);
+
+  // alert("symbol="+symbol);
 };
 
 function createCardsArray(n){
@@ -64,13 +81,14 @@ function createCardsArray(n){
 
 function createDeck(n){
   //alert("createDeck"+n);
+
   var array = createCardsArray(n);
   var deck = document.getElementsByClassName("deck")[0];
   var fragment = document.createDocumentFragment();
   for (var i=0;i<array.length;i++) {
     fragment.appendChild(array[i]);
   }
-  alert(fragment.innerHTML);
+  //alert("innerHTML"+);
   deck.appendChild(fragment);
 }
 
