@@ -35,18 +35,27 @@ function flipOver(evt) {
 
 function createCardsArray(n){
   alert("createCardsArray"+n);
-  //var symbolsArray = ['diamond','paper-plane-o','anchor','bolt','cube','leaf','bicycle','bomb'];
+  var symbolsArray = ['fa-diamond','fa-paper-plane-o','fa-anchor','fa-bolt','fa-cube','fa-leaf','fa-bicycle','fa-bomb'];
   var cardsArray = [];
   var j=0;
-  for (var i = 0; i < n*n-1; i++) {
-    cardsArray[i]= document.createElement("li").listClass;// <li class=&#34card&#34><br><i class=&#34fa fa-"+symbolsArray[j]+"></i><br></li>";
+  for (var i = 0; i < n*n; i++) {
+    var iElement = document.createElement("i");
+    iElement.classList.add("fa");
+    j++;
+    if (j>7){
+      j=0;
+    }
+    iElement.classList.add(symbolsArray[j]);
+    var li = document.createElement("li");
+    li.appendChild(iElement);
+    li.classList.add("card");
+    cardsArray[i] = li;
+
+    // <li class=&#34card&#34><br><i class=&#34fa fa-"+symbolsArray[j]+"></i><br></li>";
 
     //cardsArray[i]="<li>"+symbolsArray[j]+"</li>"
     //alert(cardsArray[i]);
-    j++;
-    if (j==7){
-      j=0;
-    }
+
 
   }
   shuffle(cardsArray);
@@ -58,13 +67,9 @@ function createDeck(n){
   var array = createCardsArray(n);
   var deck = document.getElementsByClassName("deck")[0];
   var fragment = document.createDocumentFragment();
-  var text = "";
   for (var i=0;i<array.length;i++) {
-    text = text+array[i];
+    fragment.appendChild(array[i]);
   }
-
-  alert(text);
-  fragment.innerHTML = "<li>1</li>";
   alert(fragment.innerHTML);
   deck.appendChild(fragment);
 }
