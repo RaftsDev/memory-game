@@ -49,7 +49,7 @@ function flipOver(evt) {
         flipArr[0].classList.remove("show","open");
         flipArr[1].classList.remove("show","open");
         flipArr=[];
-      },5000);
+      },3000);
         //remove earliest card
     }
   }
