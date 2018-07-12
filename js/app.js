@@ -15,40 +15,62 @@
 //listener for create Deck
 
 var deck = document.getElementsByClassName("deck")[0];
+var match = false;
 deck.addEventListener("click",flipOver);
 // var restartButton = document.getElementsByClassName("restart")[0];
 // restartButton.addEventListener("click",createDeck(4));
-var previousSymbol = "";
-var previousEl = {};
+var flipArr = [];
 
 function flipOver(evt) {
-  var target = evt.target;
-
-  iTagTarget = target.children[0];
-  // console.log(iTagTarget);
-  symbol = iTagTarget.classList[1];
-  // alert("symbol="+symbol);
-  target.classList.add("show","open");
-  // alert("previousSymbol="+previousSymbol);
-  setTimeout(function(){
-    if (symbol === previousSymbol){
-      target.classList.add("match");
-      // alert("matched symbol="+symbol+" preSymbol="+previousSymbol);
-      previousSymbol = symbol;
-      previousEl.classList.add("match");
-      previousEl = {};
-
+  if (flipArr.length>1) return false; //deny open more than cards
+  flipArr.push(evt.target);
+  console.log("Fliparr"+flipArr);
+  evt.target.classList.add("show","open");
+  console.log(flipArr.length+":"+evt.target.children[0].classList[1]);
+  if(flipArr.length===1){
+    return false;
+  }
+  if (flipArr.length>1) {
+    var firstCard = flipArr[0];
+    var secondCard = flipArr[1];
+    var iTagFirstCard = firstCard.children[0];
+    var symbolFirstCard = iTagFirstCard.classList[1];
+    var iTagSecondCard = secondCard.children[0];
+    var symbolSecondCard = iTagSecondCard.classList[1];
+    if (symbolFirstCard === symbolSecondCard) {
+      firstCard.classList.add("match");
+      secondCard.classList.add("match");
+      flipArr = [];
+      console.log("flipArr.length>1:"+symbolFirstCard+" "+symbolSecondCard+" array size:"+flipArr.length);
 
     }
-    else {
-      // alert("not Matched");
-      target.classList.remove("show","open");
-      previousSymbol = symbol;
-      previousEl = target;
-    }},1000);
+    else{
+      setTimeout(function(){
+        flipArr[0].classList.remove("show","open");
+        flipArr[1].classList.remove("show","open");
+        flipArr=[];
+      },5000);
+        //remove earliest card
+    }
+  }
 
-  // alert("symbol="+symbol);
-};
+    // setTimeout(function(){
+    //   if (flipArr.length===2){
+    //     console.log("array size:"+flipArr.length+" symbol:"+evt.target.children[0].classList[1]);
+    //     evt.target.classList.remove("show","open");
+    //     flipArr.shift();//remove earliest card
+    //     console.log("array size after shift:"+flipArr.length);
+
+    //   }
+    //   console.log("avoided condition array size:"+flipArr.length+" symbol:"+evt.target.children[0].classList[1]);
+    // },5000);
+
+   //avoid run code if cards already matched
+
+
+}
+
+
 
 function createCardsArray(n){
   alert("createCardsArray"+n);
@@ -67,12 +89,6 @@ function createCardsArray(n){
     li.appendChild(iElement);
     li.classList.add("card");
     cardsArray[i] = li;
-
-    // <li class=&#34card&#34><br><i class=&#34fa fa-"+symbolsArray[j]+"></i><br></li>";
-
-    //cardsArray[i]="<li>"+symbolsArray[j]+"</li>"
-    //alert(cardsArray[i]);
-
 
   }
   shuffle(cardsArray);
