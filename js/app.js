@@ -17,22 +17,15 @@
 var deck = document.getElementsByClassName("deck")[0];
 var movesEl = document.getElementsByClassName("moves")[0];
 movesEl.innerHTML=0;
-// var match = false;
 var clickNum = 0;
 deck.addEventListener("click",flipOver);
-// var restartButton = document.getElementsByClassName("restart")[0];
-// restartButton.addEventListener("click",createDeck(4));
 var flipMap = new  Map();
 var repeatButton = document.getElementsByClassName("restart")[0];
 repeatButton.addEventListener("click",restart);
 
 
 function restart(){
-  // alert("Restart");
-  // alert(deck);
   deck.innerHTML = "";
-  // flipArr = [];
-  // alert(deck);
   createDeck(4);
   movesEl.innerHTML=0;
 }
