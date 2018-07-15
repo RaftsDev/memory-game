@@ -18,6 +18,7 @@ var deck = document.getElementsByClassName("deck")[0];
 var movesEl = document.getElementsByClassName("moves")[0];
 movesEl.innerHTML=0;
 var clickNum = 0;
+var match = 0;
 deck.addEventListener("click",flipOver);
 var flipMap = new  Map();
 var repeatButton = document.getElementsByClassName("restart")[0];
@@ -28,6 +29,7 @@ function restart(){
   deck.innerHTML = "";
   createDeck(4);
   movesEl.innerHTML=0;
+  match = 0;
 }
 
 
@@ -52,6 +54,11 @@ function flipOver(evt) {
       flipMap.get(cardNum).classList.add("match");
       flipMap.get(cardNum-1).classList.add("match");
       flipMap.clear();
+      match++;
+      if (match == 8) {
+        
+        alert("You win!!!");
+      }
       console.log("num:"+clickNum+"flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
     }
   }
