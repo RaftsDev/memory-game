@@ -49,7 +49,7 @@ function flipOver(evt) {
       flipMap.get(cardNum).classList.add("match");
       flipMap.get(cardNum-1).classList.add("match");
       flipMap.clear();
-      console.log("flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1])+" array size:"+flipMap.size);
+      console.log("flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
     }
     // else{
     //   // setTimeout(function(){
