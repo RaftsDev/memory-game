@@ -18,8 +18,8 @@ var deck = document.getElementsByClassName("deck")[0];
 // var match = false;
 var clickNum = 0;
 deck.addEventListener("click",flipOver);
-// var restartButton = document.getElementsByClassName("restart")[0];
-// restartButton.addEventListener("click",createDeck(4));
+var restartButton = document.getElementsByClassName("restart")[0];
+restartButton.addEventListener("click",createDeck(4));
 var flipMap = new  Map();
 
 function flipOver(evt) {
