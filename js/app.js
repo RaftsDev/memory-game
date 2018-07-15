@@ -16,6 +16,7 @@
 
 var deck = document.getElementsByClassName("deck")[0];
 var movesEl = document.getElementsByClassName("moves")[0];
+movesEl.innerHTML=0;
 // var match = false;
 var clickNum = 0;
 deck.addEventListener("click",flipOver);
