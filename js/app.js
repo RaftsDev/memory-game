@@ -19,11 +19,11 @@ var match = false;
 deck.addEventListener("click",flipOver);
 // var restartButton = document.getElementsByClassName("restart")[0];
 // restartButton.addEventListener("click",createDeck(4));
-var flipArr = [];
+var flipMap = new  Map();
 
 function flipOver(evt) {
-  if (flipArr.length>1) return false; //deny open more than cards
-  flipArr.push(evt.target);
+  if (flipMap.size>1) return false; //deny open more than cards
+  flipMap.set(evt.target);
   console.log("Fliparr"+flipArr);
   evt.target.classList.add("show","open");
   console.log(flipArr.length+":"+evt.target.children[0].classList[1]);
