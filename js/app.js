@@ -27,14 +27,15 @@ function flipOver(evt) {
   clickNum++;//Counting clicks
   var cardNum = clickNum;
   flipMap.set(cardNum,evt.target);
-  console.log("num:"+clickNum+"flipMap:"+flipMap.get(cardNum)+" of:"+cardNum);
+  
+  console.log("num:"+clickNum+"flipMap:"+flipMap.get(cardNum).outerHTML+" of:"+cardNum);
   flipMap.get(cardNum).classList.add("show","open");
   console.log("num:"+clickNum+"flipMap size:"+flipMap.size+" symbol:"+flipMap.get(cardNum).children[0].classList[1]);
   // if(flipArr.length===1){
   //   return false;
   // }
    setTimeout(function(){ //start function to flip over back a card
-     console.log("num:"+clickNum+" flipMap.get:"+flipMap.get(cardNum));
+     console.log("num:"+clickNum+" flipMap.get:"+flipMap.get(cardNum).outerHTML);
      flipMap.get(cardNum).classList.remove("show","open");
      flipMap.delete(cardNum);
    },3000);
