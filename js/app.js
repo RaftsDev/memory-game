@@ -95,7 +95,7 @@ function flipOver(evt) {
 
 
 function createCardsArray(n){
-  alert("createCardsArray"+n);
+  // alert("createCardsArray"+n);
   var symbolsArray = ['fa-diamond','fa-paper-plane-o','fa-anchor','fa-bolt','fa-cube','fa-leaf','fa-bicycle','fa-bomb'];
   var cardsArray = [];
   var j=0;
