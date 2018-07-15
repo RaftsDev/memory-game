@@ -38,6 +38,7 @@ function restart(){
 function flipOver(evt) {
   if (flipMap.size>1) return false; //deny open more than cards
   clickNum++;//Counting clicks
+  movesEl.innerHTML++;//number of moves;
   var cardNum = clickNum;
   flipMap.set(cardNum,evt.target);
 
