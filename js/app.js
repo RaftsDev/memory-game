@@ -34,7 +34,7 @@ function flipOver(evt) {
   //   return false;
   // }
    setTimeout(function(){ //start function to flip over back a card
-     console.log("num:"+clickNum+" flipMap.get(cardNum)");
+     console.log("num:"+clickNum+" flipMap.get:"+flipMap.get(cardNum));
      flipMap.get(cardNum).classList.remove("show","open");
      flipMap.delete(cardNum);
    },3000);
