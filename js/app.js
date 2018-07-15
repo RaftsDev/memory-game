@@ -31,9 +31,10 @@ function restart(){
   // alert("Restart");
   // alert(deck);
   deck.innerHTML = "";
-  flipArr = [];
+  // flipArr = [];
   // alert(deck);
   createDeck(4);
+  movesEl.innerHTML=0;
 }
 
 
