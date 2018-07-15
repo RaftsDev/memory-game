@@ -16,9 +16,11 @@
 
 var deck = document.getElementsByClassName("deck")[0];
 var movesEl = document.getElementsByClassName("moves")[0];
+var starsEl = document.getElementsByClassName("fa-star");
 movesEl.innerHTML=0;
 var clickNum = 0;
 var match = 0;
+var stars = 0;
 deck.addEventListener("click",flipOver);
 var flipMap = new  Map();
 var repeatButton = document.getElementsByClassName("restart")[0];
@@ -55,9 +57,12 @@ function flipOver(evt) {
       flipMap.get(cardNum-1).classList.add("match");
       flipMap.clear();
       match++;
+      
       if (match == 8) {
-        
+        stars++;
+        starsEl[stars-1].setAttribute("style", "color: yellow;");
         alert("You win!!!");
+
       }
       console.log("num:"+clickNum+"flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
     }
