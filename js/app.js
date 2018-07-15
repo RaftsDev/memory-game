@@ -27,13 +27,14 @@ function flipOver(evt) {
   clickNum++;//Counting clicks
   var cardNum = clickNum;
   flipMap.set(cardNum,evt.target);
-  console.log("flipMap:"+flipMap.get(cardNum)+" of:"+cardNum);
+  console.log("num:"+clickNum+"flipMap:"+flipMap.get(cardNum)+" of:"+cardNum);
   flipMap.get(cardNum).classList.add("show","open");
-  console.log("flipMap size:"+flipMap.size+" symbol:"+flipMap.get(cardNum).children[0].classList[1]);
+  console.log("num:"+clickNum+"flipMap size:"+flipMap.size+" symbol:"+flipMap.get(cardNum).children[0].classList[1]);
   // if(flipArr.length===1){
   //   return false;
   // }
-   setTimeout(function(){
+   setTimeout(function(){ //start function to flip over back a card
+     console.log("num:"+clickNum+" flipMap.get(cardNum)");
      flipMap.get(cardNum).classList.remove("show","open");
      flipMap.delete(cardNum);
    },3000);
@@ -49,7 +50,7 @@ function flipOver(evt) {
       flipMap.get(cardNum).classList.add("match");
       flipMap.get(cardNum-1).classList.add("match");
       flipMap.clear();
-      console.log("flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
+      console.log("num:"+clickNum+"flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
     }
     // else{
     //   // setTimeout(function(){
