@@ -104,7 +104,7 @@ function createCardsArray(n){
 
 function createDeck(n){
   //alert("createDeck"+n);
-
+  deck.innerHTML = "";
   var array = createCardsArray(n);
   var deck = document.getElementsByClassName("deck")[0];
   var fragment = document.createDocumentFragment();
