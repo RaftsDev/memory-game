@@ -48,21 +48,12 @@ function flipOver(evt) {
   console.log("num:"+clickNum+"flipMap:"+flipMap.get(cardNum).outerHTML+" of:"+cardNum);
   flipMap.get(cardNum).classList.add("show","open");
   console.log("num:"+clickNum+"flipMap size:"+flipMap.size+" symbol:"+flipMap.get(cardNum).children[0].classList[1]);
-  // if(flipArr.length===1){
-  //   return false;
-  // }
    setTimeout(function(){ //start function to flip over back a card
      console.log("num:"+clickNum+" flipMap.get:"+flipMap.get(cardNum).outerHTML);
      flipMap.get(cardNum).classList.remove("show","open");
      flipMap.delete(cardNum);
    },3000);
   if (flipMap.size>1) {
-    // var firstCard = flipArr[0];
-    // var secondCard = flipArr[1];
-    // var iTagFirstCard = firstCard.children[0];
-    // var symbolFirstCard = iTagFirstCard.classList[1];
-    // var iTagSecondCard = secondCard.children[0];
-    // var symbolSecondCard = iTagSecondCard.classList[1];
 
     if (flipMap.get(cardNum).children[0].classList[1] === flipMap.get(cardNum-1).children[0].classList[1]) {
       flipMap.get(cardNum).classList.add("match");
@@ -70,29 +61,7 @@ function flipOver(evt) {
       flipMap.clear();
       console.log("num:"+clickNum+"flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
     }
-    // else{
-    //   // setTimeout(function(){
-    //   //   flipArr[0].classList.remove("show","open");
-    //   //   flipArr[1].classList.remove("show","open");
-    //   //   flipArr=[];
-    //   // },3000);
-    //     //remove earliest card
-    // }
   }
-
-    // setTimeout(function(){
-    //   if (flipArr.length===2){
-    //     console.log("array size:"+flipArr.length+" symbol:"+evt.target.children[0].classList[1]);
-    //     evt.target.classList.remove("show","open");
-    //     flipArr.shift();//remove earliest card
-    //     console.log("array size after shift:"+flipArr.length);
-
-    //   }
-    //   console.log("avoided condition array size:"+flipArr.length+" symbol:"+evt.target.children[0].classList[1]);
-    // },5000);
-
-   //avoid run code if cards already matched
-
 
 }
 
