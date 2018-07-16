@@ -57,10 +57,11 @@ function flipOver(evt) {
       flipMap.get(cardNum-1).classList.add("match");
       flipMap.clear();
       match++;
-      
+
       if (match == 8) {
         stars++;
         starsEl[stars-1].setAttribute("style", "color: yellow;");
+        starsEl[stars-1].classList.add("fa-2x")
         alert("You win!!!");
 
       }
