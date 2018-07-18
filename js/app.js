@@ -63,7 +63,7 @@ function flipOver(evt) {
           starsEl[stars-1].setAttribute("style", "color: yellow;");
           starsEl[stars-1].classList.add("fa-2x");
           alert("You win!!!");
-        },0);//specificied delay time
+        },500);//specificied delay time
       }
       console.log("num:"+clickNum+"flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
     }
