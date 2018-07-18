@@ -57,12 +57,16 @@ function flipOver(evt) {
       flipMap.get(cardNum-1).classList.add("match");
       flipMap.clear();
       match++;
+      if (match == 8) {
+        setTimeout(function(){
+          stars++;
+          starsEl[stars-1].setAttribute("style", "color: yellow;");
+          starsEl[stars-1].classList.add("fa-2x")
+          alert("You win!!!");},0);//specificied delay time
+      }
 
       if (match == 8) {
-        stars++;
-        starsEl[stars-1].setAttribute("style", "color: yellow;");
-        starsEl[stars-1].classList.add("fa-2x")
-        alert("You win!!!");
+
 
       }
       console.log("num:"+clickNum+"flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
