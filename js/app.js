@@ -17,14 +17,17 @@
 var deck = document.getElementsByClassName("deck")[0];
 var movesEl = document.getElementsByClassName("moves")[0];
 var starsEl = document.getElementsByClassName("fa-star");
+var watchEl = document.getElementsByClassName("stopWatch")[0];
 movesEl.innerHTML=0;
 var clickNum = 0;
 var match = 0;
 var stars = 0;
+var startTime = new Date;;//start watch
 deck.addEventListener("click",flipOver);
 var flipMap = new  Map();
 var repeatButton = document.getElementsByClassName("restart")[0];
 repeatButton.addEventListener("click",restart);
+setInterval(stopWatch(), 500);
 
 
 function restart(){
@@ -97,8 +100,10 @@ function createCardsArray(n){
 }
 
 function createDeck(n){
+
   //alert("createDeck"+n);
   deck.innerHTML = "";
+
   var array = createCardsArray(n);
   var fragment = document.createDocumentFragment();
   for (var i=0;i<array.length;i++) {
@@ -106,6 +111,7 @@ function createDeck(n){
   }
   //alert("innerHTML"+);
   deck.appendChild(fragment);
+
 }
 
 function shuffle(array) {
@@ -118,6 +124,12 @@ function shuffle(array) {
         array[randomIndex] = temporaryValue;
     }
     return array;
+}
+
+function stopWatch() {
+  var endTime = new Date;
+  watchEl.innerHTML = (endTime - startTime);
+
 }
 
 /*
