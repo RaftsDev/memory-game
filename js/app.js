@@ -28,7 +28,7 @@ deck.addEventListener("click",flipOver);
 var flipMap = new  Map();
 var repeatButton = document.getElementsByClassName("restart")[0];
 repeatButton.addEventListener("click",restart);
-setInterval("stopWatch()", 1000);
+var timeCounter = setInterval("stopWatch()", 1000);
 
 
 function restart(){
@@ -36,6 +36,7 @@ function restart(){
   createDeck(4);
   movesEl.innerHTML=0;
   match = 0;
+  timeCounter = setInterval("stopWatch()", 1000); //start count time again
 }
 
 
@@ -66,6 +67,7 @@ function flipOver(evt) {
           stars++;
           starsEl[stars-1].setAttribute("style", "color: yellow;");
           starsEl[stars-1].classList.add("fa-2x");
+          clearInterval(timeCounter);
           alert("You win!!!");
         },500);//specificied delay time
       }
