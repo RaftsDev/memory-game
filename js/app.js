@@ -21,9 +21,10 @@ var watchEl = document.getElementsByClassName("stopWatch")[0];
 movesEl.innerHTML=0;
 var clickNum = 0;
 var match = 0;
-var stars = 0;
+var starsNum = 3;
 var startTime = new Date;//start watch
-console.log("startTime"+startTime);
+var successCount = 10;//countDown opening card  for killing stars
+// console.log("startTime"+startTime);
 deck.addEventListener("click",flipOver);
 var flipMap = new  Map();
 var repeatButton = document.getElementsByClassName("restart")[0];
@@ -45,13 +46,20 @@ function flipOver(evt) {
   clickNum++;//Counting clicks
   movesEl.innerHTML++;//number of moves;
   var cardNum = clickNum;
+  successCount--;
+  if (successCount === 0) {
+    successCount = Math.round(10-match*1.5);//for next circle
+    console.log("starsNum:"+starsNum);
+    starsNum--; //
+    starsKill(starsNum);
+  }
   flipMap.set(cardNum,evt.target);
 
-  console.log("num:"+clickNum+"flipMap:"+flipMap.get(cardNum).outerHTML+" of:"+cardNum);
+  // console.log("num:"+clickNum+"flipMap:"+flipMap.get(cardNum).outerHTML+" of:"+cardNum);
   flipMap.get(cardNum).classList.add("show","open");
-  console.log("num:"+clickNum+"flipMap size:"+flipMap.size+" symbol:"+flipMap.get(cardNum).children[0].classList[1]);
+  // console.log("num:"+clickNum+"flipMap size:"+flipMap.size+" symbol:"+flipMap.get(cardNum).children[0].classList[1]);
    setTimeout(function(){ //start function to flip over back a card
-     console.log("num:"+clickNum+" flipMap.get:"+flipMap.get(cardNum).outerHTML);
+     // console.log("num:"+clickNum+" flipMap.get:"+flipMap.get(cardNum).outerHTML);
      flipMap.get(cardNum).classList.remove("show","open");
      flipMap.delete(cardNum);
    },3000);
@@ -62,16 +70,18 @@ function flipOver(evt) {
       flipMap.get(cardNum-1).classList.add("match");
       flipMap.clear();
       match++;
+      successCount = Math.round(10-match*1.5);
+
       if (match == 8) {
         setTimeout(function(){
-          stars++;
-          starsEl[stars-1].setAttribute("style", "color: yellow;");
-          starsEl[stars-1].classList.add("fa-2x");
+          // stars++;
+          // starsEl[stars-1].setAttribute("style", "color: yellow;");
+          // starsEl[stars-1].classList.add("fa-2x");
           clearInterval(timeCounter);
           alert("You win!!!");
         },500);//specificied delay time
       }
-      console.log("num:"+clickNum+"flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
+      // console.log("num:"+clickNum+"flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
     }
   }
 
@@ -130,11 +140,18 @@ function shuffle(array) {
 }
 
 function stopWatch() {
-  console.log("inside stopwatch function");
+  // console.log("inside stopwatch function");
   var endTime = new Date;
-  console.log("entTime:"+endTime);
+  // console.log("entTime:"+endTime);
   watchEl.innerHTML =Math.floor((endTime - startTime)/1000) ;
-  console.log("innerHTML"+watchEl.innerHTML);
+  // console.log("innerHTML"+watchEl.innerHTML);
+
+}
+
+function starsKill(s){
+  console.log("entering starsKill...s:"+s);
+  starsEl[s].setAttribute("style", "color: black;");
+  starsEl[s].classList.remove("fa-2x");
 
 }
 
