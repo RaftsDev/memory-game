@@ -22,6 +22,7 @@ movesEl.innerHTML=0;
 var clickNum = 0;
 var match = 0;
 var starsNum = 3;
+var lastCard = {}; //for protect two time open same card
 var startTime = new Date;//start watch
 var successCount = 10;//countDown opening card  for killing stars
 // console.log("startTime"+startTime);
@@ -38,19 +39,33 @@ function restart(){
   movesEl.innerHTML=0;
   match = 0;
   timeCounter = setInterval("stopWatch()", 1000); //start count time again
+  successCount = 10;
+  starsNum = 3;
+  for (var i = 0; i<starsEl.length;i++){
+    console.log("entering cycle");
+    starsEl[i].setAttribute("style", "color: yellow;");
+    starsEl[i].classList.add("fa-2x");
+  }
+
+
 }
 
 
 function flipOver(evt) {
   if (flipMap.size>1) return false; //deny open more than cards
+  if (evt.target === lastCard) return false;//deny event to click same card
+  lastCard = evt.target;
+
   clickNum++;//Counting clicks
   movesEl.innerHTML++;//number of moves;
   var cardNum = clickNum;
   successCount--;
   if (successCount === 0) {
-    successCount = Math.round(10-match*1.5);//for next circle
+    successCount = Math.abs(Math.floor(10-match*2));  //for next circle
     console.log("starsNum:"+starsNum);
-    starsNum--; //
+    if (starsNum>0){
+      starsNum--;
+    };
     starsKill(starsNum);
   }
   flipMap.set(cardNum,evt.target);
@@ -70,7 +85,7 @@ function flipOver(evt) {
       flipMap.get(cardNum-1).classList.add("match");
       flipMap.clear();
       match++;
-      successCount = Math.round(10-match*1.5);
+      successCount = Math.abs(Math.floor(10-match*2));
 
       if (match == 8) {
         setTimeout(function(){
