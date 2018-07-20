@@ -22,12 +22,13 @@ movesEl.innerHTML=0;
 var clickNum = 0;
 var match = 0;
 var stars = 0;
-var startTime = new Date;;//start watch
+var startTime = new Date;//start watch
+console.log("startTime"+startTime);
 deck.addEventListener("click",flipOver);
 var flipMap = new  Map();
 var repeatButton = document.getElementsByClassName("restart")[0];
 repeatButton.addEventListener("click",restart);
-setInterval(stopWatch(), 500);
+setInterval("stopWatch()", 1000);
 
 
 function restart(){
@@ -103,13 +104,13 @@ function createDeck(n){
 
   //alert("createDeck"+n);
   deck.innerHTML = "";
+  startTime = new Date; //set timer to zero
 
   var array = createCardsArray(n);
   var fragment = document.createDocumentFragment();
   for (var i=0;i<array.length;i++) {
     fragment.appendChild(array[i]);
   }
-  //alert("innerHTML"+);
   deck.appendChild(fragment);
 
 }
@@ -127,8 +128,11 @@ function shuffle(array) {
 }
 
 function stopWatch() {
+  console.log("inside stopwatch function");
   var endTime = new Date;
-  watchEl.innerHTML = (endTime - startTime);
+  console.log("entTime:"+endTime);
+  watchEl.innerHTML =Math.floor((endTime - startTime)/1000) ;
+  console.log("innerHTML"+watchEl.innerHTML);
 
 }
 
