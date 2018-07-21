@@ -25,7 +25,7 @@ var starsNum = 3;
 var lastCard = {}; //for protect two time open same card
 var startTime = new Date;//start watch
 var successCount = 10;//countDown opening card  for killing stars
-// console.log("startTime"+startTime);
+var msg = "One more game ?";
 deck.addEventListener("click",flipOver);
 var flipMap = new  Map();
 var repeatButton = document.getElementsByClassName("restart")[0];
@@ -93,8 +93,16 @@ function flipOver(evt) {
           // starsEl[stars-1].setAttribute("style", "color: yellow;");
           // starsEl[stars-1].classList.add("fa-2x");
           clearInterval(timeCounter);
-          alert("You win!!!");
+          alert("You win!!!\nYour result: "+watchEl.innerHTML+" seconds and "+movesEl.innerHTML+" moves.");
+          var confirmMsg = confirm(msg);
+          if (confirmMsg){
+            restart();
+          }
+          else {
+            return false;
+          };
         },500);//specificied delay time
+
       }
       // console.log("num:"+clickNum+"flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
     }
