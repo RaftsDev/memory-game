@@ -42,6 +42,7 @@ function restart(){
   timeCounter = setInterval("stopWatch()", 500); //start count time again
   successCount = 10;
   starsNum = 3;
+  clickNum = 0;
   for (var i = 0; i<starsEl.length;i++){
     console.log("entering cycle");
     starsEl[i].setAttribute("style", "color: yellow;");
