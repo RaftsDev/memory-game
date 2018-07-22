@@ -44,7 +44,6 @@ function restart(){
   starsNum = 3;
   clickNum = 0;
   for (var i = 0; i<starsEl.length;i++){
-    console.log("entering cycle");
     starsEl[i].setAttribute("style", "color: yellow;");
     starsEl[i].classList.add("fa-2x");
   }
@@ -59,7 +58,6 @@ function flipOver(evt) { //Event handler function
   successCount--;//countdown moves for delete star
   if (successCount === 0) { //checking condition to delete star
     successCount = 10-match; //for next circle
-    console.log("starsNum:"+starsNum);
     if (starsNum>0){
       starsNum--;
     };
