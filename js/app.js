@@ -32,7 +32,6 @@ var repeatButton = document.getElementsByClassName("restart")[0];
 repeatButton.addEventListener("click",restart);
 var timeCounter = setInterval("stopWatch()", 1000);
 
-
 function restart(){
   deck.innerHTML = "";
   createDeck(4);
@@ -46,21 +45,16 @@ function restart(){
     starsEl[i].setAttribute("style", "color: yellow;");
     starsEl[i].classList.add("fa-2x");
   }
-
-
 }
 
-
-function flipOver(evt) {
+function flipOver(evt) { //Event handler function
   if (flipMap.size>1) return false; //deny open more than two cards
   if (flipMap.size&&(evt.target==flipMap.get(clickNum))) return false; // protected from click opened card
-
   clickNum++;//Counting clicks
-
   movesEl.innerHTML=clickNum;//number of moves;
   var cardNum = clickNum;
-  successCount--;
-  if (successCount === 0) {
+  successCount--;//countdown moves for delete star
+  if (successCount === 0) { //checking condition to delete star
     successCount = 10-match; //for next circle
     console.log("starsNum:"+starsNum);
     if (starsNum>0){
@@ -69,29 +63,20 @@ function flipOver(evt) {
     starsKill(starsNum);
   }
   flipMap.set(cardNum,evt.target);
-
-  // console.log("num:"+clickNum+"flipMap:"+flipMap.get(cardNum).outerHTML+" of:"+cardNum);
   flipMap.get(cardNum).classList.add("show","open");
-  // console.log("num:"+clickNum+"flipMap size:"+flipMap.size+" symbol:"+flipMap.get(cardNum).children[0].classList[1]);
    setTimeout(function(){ //start function to flip over back a card
-     // console.log("num:"+clickNum+" flipMap.get:"+flipMap.get(cardNum).outerHTML);
      flipMap.get(cardNum).classList.remove("show","open");
      flipMap.delete(cardNum);
    },3000);
-  if (flipMap.size>1) {
-
+  if (flipMap.size>1) {  //Check match two cards
     if (flipMap.get(cardNum).children[0].classList[1] === flipMap.get(cardNum-1).children[0].classList[1]) {
       flipMap.get(cardNum).classList.add("match");
       flipMap.get(cardNum-1).classList.add("match");
       flipMap.clear();
       match++;
       successCount = 10-match;
-
       if (match == 8) {
-        setTimeout(function(){
-          // stars++;
-          // starsEl[stars-1].setAttribute("style", "color: yellow;");
-          // starsEl[stars-1].classList.add("fa-2x");
+        setTimeout(function(){ //function for alert messages
           clearInterval(timeCounter);
           alert("You win!!!\nYour result: "+watchEl.innerHTML+" seconds and "+movesEl.innerHTML+" moves.");
           var confirmMsg = confirm(msg);
@@ -104,16 +89,12 @@ function flipOver(evt) {
         },500);//specificied delay time
 
       }
-      // console.log("num:"+clickNum+"flipMap>1 symbol:"+flipMap.get(cardNum).children[0].classList[1]+" "+flipMap.get(cardNum-1).children[0].classList[1]+" array size:"+flipMap.size);
     }
   }
 
 }
 
-
-
 function createCardsArray(n){
-  // alert("createCardsArray"+n);
   var symbolsArray = ['fa-diamond','fa-paper-plane-o','fa-anchor','fa-bolt','fa-cube','fa-leaf','fa-bicycle','fa-bomb'];
   var cardsArray = [];
   var j=0;
@@ -129,18 +110,14 @@ function createCardsArray(n){
     li.appendChild(iElement);
     li.classList.add("card");
     cardsArray[i] = li;
-
   }
   shuffle(cardsArray);
   return cardsArray;
 }
 
-function createDeck(n){
-
-  //alert("createDeck"+n);
+function createDeck(n){ //Fiilling deck by cards
   deck.innerHTML = "";
   startTime = new Date; //set timer to zero
-
   var array = createCardsArray(n);
   var fragment = document.createDocumentFragment();
   for (var i=0;i<array.length;i++) {
@@ -163,19 +140,15 @@ function shuffle(array) {
 }
 
 function stopWatch() {
-  // console.log("inside stopwatch function");
   var endTime = new Date;
-  // console.log("entTime:"+endTime);
   watchEl.innerHTML =Math.floor((endTime - startTime)/1000) ;
-  // console.log("innerHTML"+watchEl.innerHTML);
 
 }
 
-function starsKill(s){
+function starsKill(s){ //function for killing stars
   console.log("entering starsKill...s:"+s);
   starsEl[s].setAttribute("style", "color: black;");
   starsEl[s].classList.remove("fa-2x");
-
 }
 
 /*
