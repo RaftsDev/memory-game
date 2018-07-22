@@ -109,3 +109,13 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+.score-panel .restart :active{
+  background-color: #bbb;
+  font-size: 10px;
+}
+.score-panel .restart :hover{
+  font-size: 20px;
+  background-color: #aaa;
+  border-radius: 5px;
+}
