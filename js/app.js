@@ -79,8 +79,8 @@ function flipOver(evt) { //Event handler function
       match++;
       successCount = 10-match;
       if (match == 8) {
+        clearInterval(timeCounter);
         setTimeout(function(){ //function for alert messages
-          clearInterval(timeCounter);
           alert("You win!!!\nYour result: "+watchEl.innerHTML+" seconds and "+movesEl.innerHTML+" moves.");
           var confirmMsg = confirm(msg);
           if (confirmMsg){
