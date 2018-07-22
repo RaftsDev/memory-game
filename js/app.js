@@ -52,12 +52,12 @@ function restart(){
 
 
 function flipOver(evt) {
-  if (flipMap.size>1) return false; //deny open more than cards
-  if (evt.target === lastCard) return false;//deny event to click same card
-  lastCard = evt.target;
+  if (flipMap.size>1) return false; //deny open more than two cards
+  if (flipMap.size&&(evt.target==flipMap.get(clickNum))) return false; // protected from click opened card
 
   clickNum++;//Counting clicks
-  movesEl.innerHTML++;//number of moves;
+
+  movesEl.innerHTML=clickNum;//number of moves;
   var cardNum = clickNum;
   successCount--;
   if (successCount === 0) {
