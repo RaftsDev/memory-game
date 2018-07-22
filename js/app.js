@@ -156,8 +156,7 @@ function stopWatch() {
 }
 
 function starsKill(s){ //function for killing stars
-  console.log("entering starsKill...s:"+s);
-  starsEl[s].setAttribute("style", "color: black;");
+  starsEl[s].style.cssText="color: black; transition: font-size 3s";
   starsEl[s].classList.remove("fa-2x");
 }
 
