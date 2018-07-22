@@ -24,20 +24,22 @@ var match = 0;
 var starsNum = 3;
 var lastCard = {}; //for protect two time open same card
 var startTime = new Date;//start watch
+var endTime;
+var timer;
 var successCount = 10;//countDown opening card  for killing stars
 var msg = "One more game ?";
 deck.addEventListener("click",flipOver);
 var flipMap = new  Map();
 var repeatButton = document.getElementsByClassName("restart")[0];
 repeatButton.addEventListener("click",restart);
-var timeCounter = setInterval("stopWatch()", 1000);
+var timeCounter = setInterval("stopWatch()", 500);
 
 function restart(){
   deck.innerHTML = "";
   createDeck(4);
   movesEl.innerHTML=0;
   match = 0;
-  timeCounter = setInterval("stopWatch()", 1000); //start count time again
+  timeCounter = setInterval("stopWatch()", 500); //start count time again
   successCount = 10;
   starsNum = 3;
   for (var i = 0; i<starsEl.length;i++){
@@ -140,8 +142,16 @@ function shuffle(array) {
 }
 
 function stopWatch() {
-  var endTime = new Date;
-  watchEl.innerHTML =Math.floor((endTime - startTime)/1000) ;
+  endTime = new Date;
+  timer = endTime-startTime;
+  var hours = Math.floor(timer/3600000);
+  var minutes = Math.floor((timer/60000)-hours*60);
+  var seconds = Math.floor((timer/1000)-minutes*60);
+  if (hours<10) hours = "0"+hours;
+  if (minutes<10) minutes = "0"+minutes;
+  if (seconds<10) seconds = "0"+seconds;
+
+  watchEl.innerHTML = hours+":"+minutes+":"+seconds;
 
 }
 
