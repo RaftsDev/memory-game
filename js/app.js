@@ -61,7 +61,7 @@ function flipOver(evt) {
   var cardNum = clickNum;
   successCount--;
   if (successCount === 0) {
-    successCount = Math.abs(Math.ceil(10-match*1.5));  //for next circle
+    successCount = 10-match; //for next circle
     console.log("starsNum:"+starsNum);
     if (starsNum>0){
       starsNum--;
@@ -85,7 +85,7 @@ function flipOver(evt) {
       flipMap.get(cardNum-1).classList.add("match");
       flipMap.clear();
       match++;
-      successCount = Math.abs(Math.ceil(10-match*1.5));
+      successCount = 10-match;
 
       if (match == 8) {
         setTimeout(function(){
