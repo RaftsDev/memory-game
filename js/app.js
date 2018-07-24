@@ -17,6 +17,7 @@
 var deck = document.getElementsByClassName("deck")[0];
 var movesEl = document.getElementsByClassName("moves")[0];
 var starsEl = document.getElementsByClassName("fa-star");
+var yellowStars = document.getElementsByClassName("fa-2x");
 var watchEl = document.getElementsByClassName("stopWatch")[0];
 movesEl.innerHTML=0;
 var clickNum = 0;
@@ -79,7 +80,12 @@ function flipOver(evt) { //Event handler function
       if (match == 8) {
         clearInterval(timeCounter);
         setTimeout(function(){ //function for alert messages
-          alert("You win!!!\nYour result: "+watchEl.innerHTML+" seconds and "+movesEl.innerHTML+" moves.");
+          var rate;
+          if (yellowStars.length == 3) rate = "high level";
+          if (yellowStars.length == 2) rate = "medium level";
+          if (yellowStars.length == 1) rate = "low level";
+          if (yellowStars.length == 0) rate = "very bad";
+          alert("You win!!!\nYour result: "+watchEl.innerHTML+" seconds\nYour memmory rate is: "+rate);
           var confirmMsg = confirm(msg);
           if (confirmMsg){
             restart();
