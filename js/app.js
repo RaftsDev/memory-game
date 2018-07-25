@@ -127,7 +127,7 @@ function createCardsArray(n){
     li.classList.add("card");
     cardsArray[i] = li;
   }
-  shuffle(cardsArray);
+  //shuffle(cardsArray);
   return cardsArray;
 }
 
