@@ -20,7 +20,9 @@ var starsEl = document.getElementsByClassName("fa-star");
 var yellowStars = document.getElementsByClassName("fa-2x");
 var watchEl = document.getElementsByClassName("stopWatch")[0];
 movesEl.innerHTML=0;
-var clickNum = 0;
+
+var gameNumber = 1; // for counting game
+var clickNum = gameNumber*100000;
 var match = 0;
 var starsNum = 3;
 var lastCard = {}; //for protect two time open same card
@@ -36,6 +38,7 @@ repeatButton.addEventListener("click",restart);
 var timeCounter = setInterval("stopWatch()", 500);
 
 function restart(){
+  gameNumber++; //increase count of game
   deck.innerHTML = "";
   createDeck(4);
   movesEl.innerHTML=0;
@@ -43,18 +46,19 @@ function restart(){
   timeCounter = setInterval("stopWatch()", 500); //start count time again
   successCount = 10;
   starsNum = 3;
-  clickNum = 0;
+  clickNum = gameNumber*100000; // counting moves every games outstanding each other
   for (var i = 0; i<starsEl.length;i++){
     starsEl[i].setAttribute("style", "color: yellow;");
     starsEl[i].classList.add("fa-2x");
   }
+  flipMap.clear();
 }
 
 function flipOver(evt) { //Event handler function
   if (flipMap.size>1) return false; //deny open more than two cards
   if (flipMap.size&&(evt.target==flipMap.get(clickNum))) return false; // protected from click opened card
   clickNum++;//Counting clicks
-  movesEl.innerHTML=clickNum;//number of moves;
+  movesEl.innerHTML=clickNum - gameNumber*100000;//number of moves;
   var cardNum = clickNum;
   successCount--;//countdown moves for delete star
   if (successCount === 0) { //checking condition to delete star
