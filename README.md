@@ -2,19 +2,67 @@
 
 ## Table of Contents
 
+* [Install](#Install)
 * [Instructions](#instructions)
+* [Rules](#Rules)
 * [Contributing](#contributing)
+
+## Install
+
+Source code in master branch of [GitHub.com](#https://github.com/kubr2017/memory-game)
+
+Web page in [GitHub.io](#https://kubr2017.github.io/memory-game/)
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+### Files and folders
 
-To get started, open `js/app.js` and start building out the app's functionality
+The code consist in 3 folders:
+  * img - its has just one image file for background
+  * css - for app.css file
+  * js - for app.js file
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+  #### Styles
+
+  Cards (symbols on cards) in game stylized by aditional rules from external css file that declared in index.html file:
+
+  `<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">`  
+
+  ### Working code
+
+  Main code locate in app.js file in js folder.
+  When you start code its run function createDeck to create html code of cards.
+
+  createDeck function use function createCardsArray which build Array with elements. Each element - one card.
+
+  After bold array its have to shuffle them with function shuffle().
+
+  When shuffle complete array element push to html code.
+
+  All clicked cards  is flip over by adding a css classes "show" and "open".
+  Matching cards get css class "match".
+
+  work with flip over  cards realized through flipOver function and Map collection flipMap.
+
+## Rules
+
+In the same time its possible to open just two cards.
+
+Each card stands in open position just 3 seconds.
+
+If you had case with clicked the card that you already opened before - you lose stars.
+
+The game finish when all cards is matched. And then popup message with your results regards your stars rate:
+
+No stars - very bad
+1 star - bad
+2 stars - good
+3 stars - very good
+
+To restart game click restart button in right from time clock.
+
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+This repository is the  code for Udacity.
+Contributing is will be decline.
