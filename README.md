@@ -2,9 +2,9 @@
 
 ## Table of Contents
 
-* [Install](#Install)
+* [Install](#install)
 * [Instructions](#instructions)
-* [Rules](#Rules)
+* [Rules](#rules)
 * [Contributing](#contributing)
 
 ## Install
