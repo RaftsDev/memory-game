@@ -9,9 +9,9 @@
 
 ## Install
 
-Source code in master branch of [GitHub.com](#https://github.com/kubr2017/memory-game)
+Source code in master branch of [GitHub.com](https://github.com/kubr2017/memory-game)
 
-Web page in [GitHub.io](#https://kubr2017.github.io/memory-game/)
+Web page in [GitHub.io](https://kubr2017.github.io/memory-game/)
 
 ## Instructions
 
