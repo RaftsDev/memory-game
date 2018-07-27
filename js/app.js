@@ -72,22 +72,15 @@ function flipOver(evt) { //Event handler function
   flipMap.get(cardNum).classList.add("show","open");
    setTimeout(function(){ //start function to flip over back a card
      if(flipMap.has(cardNum)){ //avoiding case when card already matched and flipMap will be cleared.
-       console.log("setTimeout and cardNum:"+cardNum+" classes:"+flipMap.get(cardNum).classList.length+" cl0:"+flipMap.get(cardNum).classList[0]+" cl1:"+flipMap.get(cardNum).classList[1]+" cl2:"+flipMap.get(cardNum).classList[2]);
        flipMap.get(cardNum).classList.remove("show","open");
        flipMap.delete(cardNum);
      }
    },3000);
   if (flipMap.size>1) {  //Check match two cards
     if (flipMap.get(cardNum).children[0].classList[1] === flipMap.get(cardNum-1).children[0].classList[1]) {
-      console.log("case Matched cardNum: "+cardNum+" symbol: "+flipMap.get(cardNum).children[0].classList[1]+" cardNum-1: "+(cardNum-1)+" symbol: "+flipMap.get(cardNum-1).children[0].classList[1]);
-      console.log("case Matched classes length:"+flipMap.get(cardNum).classList.length+" class 0:"+flipMap.get(cardNum).classList[0]+"cl 1:"+flipMap.get(cardNum).classList[1]+"cl 2:"+flipMap.get(cardNum).classList[2]);
-      console.log("case Matched classes length:"+flipMap.get(cardNum-1).classList.length+" class 0:"+flipMap.get(cardNum-1).classList[0]+"cl 1:"+flipMap.get(cardNum-1).classList[1]+"cl 2:"+flipMap.get(cardNum-1).classList[2]);
       flipMap.get(cardNum).classList.add("match");
       flipMap.get(cardNum-1).classList.add("match");
-      console.log("case Matched cardNum:"+cardNum+" classList length:"+flipMap.get(cardNum).classList.length);
-      console.log("case Matched cardNum-1:"+(cardNum-1)+" classList length:"+flipMap.get(cardNum-1).classList.length);
       flipMap.clear();
-      console.log("case Matched checking clearing flipMap.size:"+flipMap.size);
       match++;
       successCount = 10-match;
       if (match == 8) {
@@ -111,7 +104,6 @@ function flipOver(evt) { //Event handler function
       }
     }
   }
-
 }
 
 function createCardsArray(n){
@@ -144,7 +136,6 @@ function createDeck(n){ //Fiilling deck by cards
     fragment.appendChild(array[i]);
   }
   deck.appendChild(fragment);
-
 }
 
 function shuffle(array) {
