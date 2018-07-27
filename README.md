@@ -18,9 +18,9 @@ Web page in [GitHub.io](https://kubr2017.github.io/memory-game/)
 ### Files and folders
 
 The code consist in 3 folders:
-  * img - its has just one image file for background
-  * css - for app.css file
-  * js - for app.js file
+  * **img** - its has just one image file for background.
+  * **css** - for `app.css` file.
+  * **js** - for `app.js` file.
 
   #### Styles
 
@@ -30,19 +30,19 @@ The code consist in 3 folders:
 
   ### Working code
 
-  Main code locate in app.js file in js folder.
-  When you start code its run function createDeck to create html code of cards.
+  Main code locate in `app.js` file in **js** folder.
+  When you start runing the function `createDeck()` to create html code of cards.
 
-  createDeck function use function createCardsArray which build Array with elements. Each element - one card.
+  `createDeck()` function use function `createCardsArray()` which build Array with elements. Each element - one card.
 
-  After bold array its have to shuffle them with function shuffle().
+  After built array start shuffle through function  `shuffle()`.
 
-  When shuffle complete array element push to html code.
+  When shuffle complete array element will push to **html** code.
 
-  All clicked cards  is flip over by adding a css classes "show" and "open".
-  Matching cards get css class "match".
+  All clicked cards  is flip over by adding a **css** classes `"show"` and `"open"`.
+  Matching cards get **css** class `"match"`.
 
-  work with flip over  cards realized through flipOver function and Map collection flipMap.
+  Work with flip over  cards realized through `flipOver()` function and Map collection `flipMap`.
 
 ## Rules
 
@@ -55,14 +55,14 @@ If you had case with clicked the card that you already opened before - you lose 
 The game finish when all cards is matched. And then popup message with your results regards your stars rate:
 
 No stars - very bad
-1 star - bad
-2 stars - good
-3 stars - very good
+:star: - bad
+:star::star: - good
+:star::star::star: - very good
 
-To restart game click restart button in right from time clock.
+To restart game click restart button :repeat:.
 
 
 ## Contributing
 
-This repository is the  code for Udacity.
-Contributing is will be decline.
+This repository for **Udacity** learning programm.
+Contributing will be decline.
