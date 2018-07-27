@@ -14,11 +14,11 @@
 
 //listener for create Deck
 
-var deck = document.getElementsByClassName("deck")[0];
-var movesEl = document.getElementsByClassName("moves")[0];
-var starsEl = document.getElementsByClassName("fa-star");
-var yellowStars = document.getElementsByClassName("fa-2x");
-var watchEl = document.getElementsByClassName("stopWatch")[0];
+const deck = document.getElementsByClassName("deck")[0];
+const movesEl = document.getElementsByClassName("moves")[0];
+const starsEl = document.getElementsByClassName("fa-star");
+const yellowStars = document.getElementsByClassName("fa-2x");
+const watchEl = document.getElementsByClassName("stopWatch")[0];
 movesEl.innerHTML=0;
 
 var gameNumber = 1; // for counting game
@@ -33,7 +33,7 @@ var successCount = 10;//countDown opening card  for killing stars
 var msg = "One more game ?";
 deck.addEventListener("click",flipOver);
 var flipMap = new  Map();
-var repeatButton = document.getElementsByClassName("restart")[0];
+const repeatButton = document.getElementsByClassName("restart")[0];
 repeatButton.addEventListener("click",restart);
 var timeCounter = setInterval("stopWatch()", 500);
 
