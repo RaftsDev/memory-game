@@ -54,10 +54,10 @@ If you had case with clicked the card that you already opened before - you lose 
 
 The game finish when all cards is matched. And then popup message with your results regards your stars rate:
 
-No stars - very bad
-:star: - bad
-:star::star: - good
-:star::star::star: - very good
+- No stars - very bad
+- :star: - bad
+- :star::star: - good
+- :star::star::star: - very good
 
 To restart game click restart button :repeat:.
 
