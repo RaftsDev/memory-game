@@ -47,7 +47,7 @@ function restart(){
   successCount = 10;
   starsNum = 3;
   clickNum = gameNumber*100000; // counting moves every games outstanding each other
-  for (var i = 0; i<starsEl.length;i++){
+  for (let i = 0; i<starsEl.length;i++){
     starsEl[i].setAttribute("style", "color: yellow;");
     starsEl[i].classList.add("fa-2x");
   }
@@ -59,7 +59,7 @@ function flipOver(evt) { //Event handler function
   if (flipMap.size&&(evt.target==flipMap.get(clickNum))) return false; // protected from click opened card
   clickNum++;//Counting clicks
   movesEl.innerHTML=clickNum - gameNumber*100000;//number of moves;
-  var cardNum = clickNum;
+  let cardNum = clickNum;
   successCount--;//countdown moves for delete star
   if (successCount === 0) { //checking condition to delete star
     successCount = 10-match; //for next circle
@@ -93,13 +93,13 @@ function flipOver(evt) { //Event handler function
       if (match == 8) {
         clearInterval(timeCounter);
         setTimeout(function(){ //function for alert messages
-          var rate;
+          let rate;
           if (yellowStars.length == 3) rate = "high level";
           if (yellowStars.length == 2) rate = "medium level";
           if (yellowStars.length == 1) rate = "low level";
           if (yellowStars.length == 0) rate = "very bad";
           alert("You win!!!\nYour result: "+watchEl.innerHTML+" seconds\nYour memmory rate is: "+rate);
-          var confirmMsg = confirm(msg);
+          let confirmMsg = confirm(msg);
           if (confirmMsg){
             restart();
           }
@@ -115,18 +115,18 @@ function flipOver(evt) { //Event handler function
 }
 
 function createCardsArray(n){
-  var symbolsArray = ['fa-diamond','fa-paper-plane-o','fa-anchor','fa-bolt','fa-cube','fa-leaf','fa-bicycle','fa-bomb'];
-  var cardsArray = [];
-  var j=0;
-  for (var i = 0; i < n*n; i++) {
-    var iElement = document.createElement("i");
+  let symbolsArray = ['fa-diamond','fa-paper-plane-o','fa-anchor','fa-bolt','fa-cube','fa-leaf','fa-bicycle','fa-bomb'];
+  let cardsArray = [];
+  let j=0;
+  for (let i = 0; i < n*n; i++) {
+    let iElement = document.createElement("i");
     iElement.classList.add("fa");
     j++;
     if (j>7){
       j=0;
     }
     iElement.classList.add(symbolsArray[j]);
-    var li = document.createElement("li");
+    let li = document.createElement("li");
     li.appendChild(iElement);
     li.classList.add("card");
     cardsArray[i] = li;
@@ -138,9 +138,9 @@ function createCardsArray(n){
 function createDeck(n){ //Fiilling deck by cards
   deck.innerHTML = "";
   startTime = new Date; //set timer to zero
-  var array = createCardsArray(n);
-  var fragment = document.createDocumentFragment();
-  for (var i=0;i<array.length;i++) {
+  let array = createCardsArray(n);
+  let fragment = document.createDocumentFragment();
+  for (let i=0;i<array.length;i++) {
     fragment.appendChild(array[i]);
   }
   deck.appendChild(fragment);
@@ -148,7 +148,7 @@ function createDeck(n){ //Fiilling deck by cards
 }
 
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -162,9 +162,9 @@ function shuffle(array) {
 function stopWatch() {
   endTime = new Date;
   timer = endTime-startTime;
-  var hours = Math.floor(timer/3600000);
-  var minutes = Math.floor((timer/60000)-hours*60);
-  var seconds = Math.floor((timer/1000)-minutes*60);
+  let hours = Math.floor(timer/3600000);
+  let minutes = Math.floor((timer/60000)-hours*60);
+  let seconds = Math.floor((timer/1000)-minutes*60);
   if (hours<10) hours = "0"+hours;
   if (minutes<10) minutes = "0"+minutes;
   if (seconds<10) seconds = "0"+seconds;
