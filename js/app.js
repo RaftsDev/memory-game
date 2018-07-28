@@ -91,7 +91,9 @@ function flipOver(evt) { //Event handler function
           if (yellowStars.length == 2) rate = "medium level";
           if (yellowStars.length == 1) rate = "low level";
           if (yellowStars.length == 0) rate = "very bad";
-          alert("You win!!!\nYour result: "+watchEl.innerHTML+" seconds\nYour memmory rate is: "+rate);
+          alert(`You win!!!
+Your result: ${watchEl.innerHTML} seconds.
+Your memmory rate is: ${rate}`);
           let confirmMsg = confirm(msg);
           if (confirmMsg){
             restart();
@@ -123,7 +125,7 @@ function createCardsArray(n){
     li.classList.add("card");
     cardsArray[i] = li;
   }
-  shuffle(cardsArray);
+  //shuffle(cardsArray);
   return cardsArray;
 }
 
